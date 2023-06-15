@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionsController < Devise::SessionsController
 
     def create
         @user = User.find_by(username: params[:username])
@@ -9,8 +9,10 @@ class SessionsController < ApplicationController
             redirect_to user_path
         else
             #error message on fail
+     def home
             message = "Something went wrong! Make sure your username and password are correct!"
             redirect_to login_path, notice: message
             end
         end
     end
+end
